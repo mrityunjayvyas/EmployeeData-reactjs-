@@ -1,23 +1,38 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import Navbar from "./components/Navbar";
+import Inputsection from "./components/Inputsection";
+import Datasheet from "./components/Datasheet";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import { useState } from "react";
+import Alert from "./components/Alert";
 
 function App() {
+  const [alert, setAlert] = useState(null);
+
+  const showAlert = (message, type) => {
+    setAlert({
+      masg: message,
+      type: type,
+    });
+    setTimeout(() => {
+      setAlert(null);
+    }, 1500);
+  };
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Navbar />
+      <Alert alert={alert} />
+      <Router>
+        <Routes>
+          <Route exact path="/" element={<Datasheet showAlert={showAlert} />} />
+
+          <Route
+            exact
+            path="/addemployeedtails"
+            element={<Inputsection showAlert={showAlert} />}
+          />
+        </Routes>
+      </Router>
     </div>
   );
 }

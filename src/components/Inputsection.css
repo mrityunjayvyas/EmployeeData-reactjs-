@@ -1,0 +1,13 @@
+body{
+    background-color:#CFD8DC;
+}
+.container{
+    width: 30%;
+    margin-top: 5%;
+    background-color: #FAFAFA;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;}
+.container2{ 
+    width: 60%;
+    }
